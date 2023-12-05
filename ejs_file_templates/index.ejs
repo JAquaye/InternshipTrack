@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Internship Tracker</title>
+    <style>
+      body {
+        background-color: #F4DFC8;
+        color: #fff;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        max-width: 600px;
+        width: 100%;
+      }
+
+      .content-box {
+        background-color: rgba(0, 0, 0, 0.8); 
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      h1, h2 {
+        color: #F4EAE0; 
+        margin-bottom: 20px;
+      }
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      li {
+        margin-bottom: 10px;
+      }
+
+      a {
+        color: red; 
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        text-decoration: underline;
+        color: #F4EAE0;
+      }
+
+      #joke-image-container {
+        background-color: rgba(0, 0, 0, 0.8); 
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+      }
+
+      #joke-container {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: transparent;
+        border-radius: 10px;
+        text-align: center;
+        color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content-container">
+      <div class="content-box">
+        <h1>Internship Tracker App</h1>
+        <h2>Application Details</h2>
+        <ul>
+          <li>To submit a new application, select <a href="/newApplication">New Application</a></li>
+          <li>To review/update an application, select <a href="/reviewApplication">Review Application</a></li>
+          <li>To display all applications, select <a href="/allApplications">View All Applications</a></li>
+          <li>To display internships based on wage, select <a href="/applicationWages">View by Wages</a></li>
+          <li>To remove an application or refresh all applications, select <a href="/removeApps">Remove Application</a></li>
+        </ul>
+      </div>
+
+      <div id="joke-container">
+        <h2 style="color: black;">Dad Joke of the Day</h2>
+        <p id="dad-joke"></p>
+        <button onclick="getDadJoke()">Get Joke</button>
+      </div>
+  
+      <script>
+        async function getDadJoke() {
+          try {
+            const response = await fetch('https://icanhazdadjoke.com/', {
+              headers: {
+                Accept: 'application/json',
+              },
+            });
+            const data = await response.json();
+            document.getElementById('dad-joke').innerText = data.joke;
+          } catch (error) {
+            console.error('Error fetching dad joke:', error);
+          }
+        }
+        getDadJoke(); // Fetch a joke when the page loads
+      </script>
+    </div>
+  </body>
+</html>
+
+
+
+
+
